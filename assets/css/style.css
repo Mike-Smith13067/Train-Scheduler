@@ -5,3 +5,12 @@ card {
     margin: 0px;
     padding: 0px;
 }
+
+table {
+    width: 100%;
+}
+
+cell {
+    float: left;
+    margin-left: 50px;
+}
