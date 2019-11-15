@@ -26,7 +26,7 @@
             </div>
             <div class=card-body>
                 <table>
-                    <tr>
+                    <tr class="header">
                         <th>Train Name</th>
                         <th>Destination</th>
                         <th>Train Frequency (min)</th>
@@ -36,11 +36,11 @@
 
                     </tr>
                     <tr>
-                        <td>Group 1</td>
-                        <td>Group 1</td>
-                        <td>Group 1</td>
-                        <td>Group 1</td>
-                        <td>Group 1</td>
+                        <td>Ozzy's Crazy</td>
+                        <td>Off the rails</td>
+                        <td>Daily</td>
+                        <td>Now</td>
+                        <td>5</td>
                     </tr>
                 </table>
 
@@ -49,24 +49,21 @@
 
 
         </div>
-        
+
     </div>
     <div class="jumbotron">
-            <h1 class="display text-center">New Trains</h1>
+        <h1 class="display text-center">New Trains</h1>
     </div>
     <div class="container">
         <div class="card col-sm-12">
             <div class="card-header">
                 Add Train
             </div>
-            
             <form>
-
-
         </div>
         <div class="card">
             <div class="form-group">
-                <label for="newTranName">New Train Name</label>
+                <label for="newTrainName">New Train Name</label>
                 <input type="text" class="form-control" id="newTrainName">
             </div>
             <div class="form-group">
@@ -74,13 +71,14 @@
                 <input type="text" class="form-control" id="destination">
             </div>
             <div class="form-group">
-                <label for="monthlyRate">Monthly Rate</label>
-                <input type="text" class="form-control" id="monthlyRate">
+                <label for="monthlyRate">First Train Time (HH:mm)</label>
+                <input type="text" class="form-control" id="firstTrain">
             </div>
             <div class="form-group">
-                <label for="role">Role</label>
-                <input type="text" class="form-control" id="role">
+                <label for="monthlyRate">Frequency (minutes)</label>
+                <input type="text" class="form-control" id="trainFreq">
             </div>
+
             <button id="newTrainSubmit" class="btn btn-primary">Submit</button>
             </form>
         </div>
