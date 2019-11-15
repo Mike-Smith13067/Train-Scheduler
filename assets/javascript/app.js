@@ -71,4 +71,13 @@ $("#newTrainSubmit").on("click", function (event) {
 
         $("table > tbody").append(newRow)
     });
+
+    //reset
+// function reset() {(
+//     $("#newTrainName").clear(),
+//     $("#destination").clear(),
+//     $("#firstTrain").clear(),
+//     $("#trainFreq").clear(),
+//     {);
+
 });
