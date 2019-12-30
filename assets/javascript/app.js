@@ -51,32 +51,34 @@ $("#newTrainSubmit").on("click", function (event) {
         destination = childSnapShot.val().destination;
         trainFreq = childSnapShot.val().trainFreq;
         firstTrain = childSnapShot.val().firstTrain;
-        firstTime = moment(firstTrain, "HH:mm");
-        console.log("firstTime", firstTime._i);
-        var currentTime = moment().format("HH:mm");
-        console.log("current time", currentTime);
-        // // manipulate firstTrain back 1 year to calculate future train times
-        // var modifiedTrainTime = moment(firstTime, "HH:mm").subtract(1, "years");
-        // console.log ("modifiedTime", modifiedTrainTime._i);
-        // calculate time difference
-        var timeDiffInit = moment(firstTime).diff(moment(), "minutes");
-        console.log("timeDiff", timeDiffInit);
-        console.log("trainFreq", trainFreq);
-        var timeDiff = Math.abs(timeDiffInit);
-        console.log(timeDiff);
-        var waitTime = timeDiff % trainFreq;
-        console.log("wait time", waitTime);
 
-        // calculate "minutes away"
-        var arrivalMin = trainFreq - waitTime;
-        console.log("arrival", arrivalMin)
-        //caculate trian arrival
-        var nextTrainTimeArr = moment().add(arrivalMin, "minutes");
 
         function nextTrain() {
-            if (nextTrainTimeArr < moment()) {
+            firstTime = moment(firstTrain, "HH:mm");
+            console.log("firstTime", firstTime._i);
+            var currentTime = moment().format("HH:mm");
+            console.log("current time", currentTime);
+            // calculate time difference
+            var timeDiffInit = moment(firstTime).diff(moment(), "minutes");
+            console.log("timeDiff", timeDiffInit);
+            console.log("trainFreq", trainFreq);
+            var timeDiff = Math.abs(timeDiffInit);
+            console.log(timeDiff);
+            var waitTime = timeDiff % trainFreq;
+            console.log("wait time", waitTime);
+
+            // calculate "minutes away"
+            var arrivalMin = trainFreq - waitTime;
+            console.log("arrival", arrivalMin)
+            //caculate trian arrival
+            var nextTrainTimeArr = moment().add(arrivalMin, "minutes");
+            console.log(nextTrainTimeArr);
+            if (timeDiffInit > 0) {
+                console.log("train time in the future");
                 nextTrainTime = firstTime;
-                console.log("Next train time", nextTrainTimeArr);
+                console.log("Next train time", nextTrainTime._d);
+                arrivalMin = timeDiff;
+                console.log(arrivalMin);
                 // Display new train information
                 var newRow = $("<tr>").append(
                     $("<td>").text(newTrainName),
@@ -90,8 +92,10 @@ $("#newTrainSubmit").on("click", function (event) {
                 $("table > tbody").append(newRow)
             }
             else {
-                var nextTrainTime = moment().add(arrivalMin, "minutes");
+                console.log("first train before now");
+                nextTrainTime = moment().add(waitTime, "minutes");
                 console.log("next train time", nextTrainTime._d);
+                arrivalMin = waitTime;
                 // Display new train information
                 var newRow = $("<tr>").append(
                     $("<td>").text(newTrainName),
