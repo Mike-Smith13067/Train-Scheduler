@@ -11,12 +11,15 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var database = firebase.database();
+//Initialize variables
 
-var newTrainName = 0;
+var database = firebase.database();
+var newTrainName = "";
+var destination = "";
+var firstTrain = "";
+var trainFreq = "";
 
 //Add new trains to schedule
-
 //Collect user input
 
 $("#newTrainSubmit").on("click", function (event) {
@@ -108,8 +111,16 @@ $("#newTrainSubmit").on("click", function (event) {
 
                 $("table > tbody").append(newRow)
             }
+
         };
         nextTrain();
+
+        //Clear inputs
+        $("#newTrainName").val("");
+        $("#destination").val("");
+        $("#firstTrain").val("");
+        $("#trainFreq").val("");
+        console.log(newTrainName, destination, firstTrain, trainFreq);
 
         // var nextTrainTime = moment(nextTrainTime, "HH:mm");
         // // var trainRemain = trainInterval % trainFreq;       
